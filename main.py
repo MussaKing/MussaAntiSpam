@@ -7,17 +7,13 @@ bot = telebot.TeleBot(config.TOKEN)
 
 # =====================
 # НАСТРОЙКИ
-# =====================
-
 ban_limit = 2
 
-admin_state = {}      # состояния админа (пароль / ввод лимита)
-banned_users = {}      # список банов
-violations = {}        # нарушения пользователей
+admin_state = {}  # состояния админа (пароль / ввод лимита)
+banned_users = {}  # список банов
+violations = {}  # нарушения пользователей
 
 
-# =====================
-# /start
 # =====================
 
 @bot.message_handler(commands=['start'])
@@ -27,10 +23,6 @@ def start(message):
         f"Привет, {message.from_user.first_name}! Я антиспам бот."
     )
 
-
-# =====================
-# НОРМАЛИЗАЦИЯ
-# =====================
 
 def normalize(text):
     text = text.lower()
@@ -48,10 +40,6 @@ def normalize(text):
     text = re.sub(r"\s+", "", text)
     return text
 
-
-# =====================
-# СПАМ ПАТТЕРНЫ
-# =====================
 
 PATTERNS = [
     r"заработ\w*",
@@ -77,10 +65,6 @@ def is_spam(text):
     return score >= 1
 
 
-# =====================
-# ADMIN PANEL UI
-# =====================
-
 def admin_menu(chat_id):
     markup = types.InlineKeyboardMarkup()
 
@@ -93,23 +77,14 @@ def admin_menu(chat_id):
     bot.send_message(chat_id, "🔐 Админ-панель:", reply_markup=markup)
 
 
-# =====================
-# /admin
-# =====================
-
 @bot.message_handler(commands=['admin'])
 def admin(message):
     admin_state[message.from_user.id] = "wait_password"
     bot.send_message(message.chat.id, "Введите пароль:")
 
 
-# =====================
-# CALLBACK КНОПКИ
-# =====================
-
 @bot.callback_query_handler(func=lambda call: True)
 def callback(call):
-
     global ban_limit
 
     if call.data == "set_limit":
@@ -132,26 +107,17 @@ def callback(call):
         bot.send_message(call.message.chat.id, text)
 
 
-# =====================
-# ГЛАВНЫЙ ОБРАБОТЧИК
-# =====================
-
 @bot.message_handler(content_types=['text'])
 def handle(message):
-
     global ban_limit
 
     user_id = message.from_user.id
 
     # =====================
-    # АДМИН ЛОГИКА
-    # =====================
-
     if user_id in admin_state:
 
         state = admin_state[user_id]
 
-        # ---- пароль ----
         if state == "wait_password":
 
             if message.text == config.ADMIN_PASSWORD:
@@ -163,7 +129,6 @@ def handle(message):
 
             return
 
-        # ---- лимит ----
         if state == "wait_limit":
 
             if message.text.isdigit():
@@ -181,12 +146,6 @@ def handle(message):
             return
 
     # =====================
-    # АНТИСПАМ
-    # =====================
-
-    if message.from_user.is_bot:
-        return
-
     if not message.text:
         return
 
@@ -221,8 +180,5 @@ def handle(message):
             print("Ошибка:", e)
 
 
-# =====================
 # ЗАПУСК
-# =====================
-
 bot.polling(none_stop=True)

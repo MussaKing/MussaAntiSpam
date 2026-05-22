@@ -2,6 +2,8 @@
 
 <div align="center">
 
+<img src="logo.jpg" width="180" alt="MussaAntiSpam Logo">
+
 ![GitHub stars](https://img.shields.io/github/stars/MussaKing/MussaAntiSpam?style=for-the-badge)
 ![GitHub forks](https://img.shields.io/github/forks/MussaKing/MussaAntiSpam?style=for-the-badge)
 ![GitHub repo size](https://img.shields.io/github/repo-size/MussaKing/MussaAntiSpam?style=for-the-badge)

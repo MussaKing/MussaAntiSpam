@@ -4,12 +4,17 @@
 
 <img src="logo.jpg" width="180" alt="MussaAntiSpam Logo">
 
+[![Telegram Bot](https://img.shields.io/badge/Telegram-Bot-blue?style=for-the-badge&logo=telegram)](https://t.me/mussa_antispam_bot)
+
 ![GitHub stars](https://img.shields.io/github/stars/MussaKing/MussaAntiSpam?style=for-the-badge)
 ![GitHub forks](https://img.shields.io/github/forks/MussaKing/MussaAntiSpam?style=for-the-badge)
 ![GitHub repo size](https://img.shields.io/github/repo-size/MussaKing/MussaAntiSpam?style=for-the-badge)
 ![GitHub license](https://img.shields.io/github/license/MussaKing/MussaAntiSpam?style=for-the-badge)
 
 Powerful Telegram Anti-Spam Bot for protecting groups and chats from spam, raids and flood attacks.
+
+### 🤖 Telegram Bot
+https://t.me/mussa_antispam_bot
 
 </div>
 

@@ -108,12 +108,6 @@ python main.py
 
 ---
 
-# 📸 Screenshots
-
-Add your bot screenshots here.
-
----
-
 # 🤝 Contributing
 
 Contributions are welcome!
